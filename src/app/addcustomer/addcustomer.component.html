@@ -1,0 +1,195 @@
+<mat-card class="example-card">
+   
+
+
+    <div class="container main main-login main-center">
+        <div class="">
+            <h5 class="col-5" style="padding: 10px;color:white">ADD CONTACT PERSON DETAILS</h5>
+            </div>
+      <div class="form-group row">
+          <label for="example-url-input" class="col-2 col-form-label">Type</label>
+          <div class="col-10">
+              <select [(ngModel)]="lead.type" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                  <option selected>Select Type</option>
+                  <option value="Mobile">Customer</option>
+                  <option value="Lanline">System Integrator</option>
+                  <option value="Etc">Manufacturer  Master</option>
+                </select>
+          </div>
+        </div>
+
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Customer UID</label>
+        <div class="col-10">
+          <input class="form-control" [(ngModel)]="lead.uid" type="text"  disabled="true"  placeholder="Enter your UID" >
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-search-input" class="col-2 col-form-label">First Name</label>
+        <div class="col-10">
+          <input class="form-control" [(ngModel)]="lead.fname" type="text" placeholder="Enter your name" id="example-search-input">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-email-input" class="col-2 col-form-label">Last Name</label>
+        <div class="col-10">
+          <input class="form-control"[(ngModel)]="lead.lname" placeholder="Enter your Facility name" type="text"  id="example-email-input">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-url-input" class="col-2 col-form-label">Designation</label>
+        <div class="col-10">
+            <select [(ngModel)]="lead.designation" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                <option selected>Designation</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Lanline">Lanline</option>
+                <option value="Etc">Etc</option>
+              </select>
+        </div>
+      </div>
+
+      <div class="form-group row"  *ngFor="let p of pages">
+          <label for="example-number-input"  class="col-2 col-form-label">Phone {{p.id}}</label>
+          <div class="col-10">
+            <div>
+              <div class="float-left">
+                  <select [(ngModel)]="lead[p.text1]"  class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                      <option selected>Phone Type</option>
+                      <option value="Mobile">Mobile</option>
+                      <option value="Lanline">Lanline</option>
+                      <option value="Etc">Etc</option>
+                    </select>
+              </div>
+              <div class="float-left">
+                  <input placeholder="Enter Phone Number" [(ngModel)]="lead[p.text]" class="form-control" type="number" id="example-number-input">
+                          </div>
+                          <div *ngIf="p.id == '1'" style="margin-left: 1%" class="float-left">
+      <button class="form-control" (click)="add(p.id)" style="background: green;color:white;font-weight: bold;margin: auto">+</button>
+                                      </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div *ngFor="let px of email" class="form-group row">
+            <label for="example-password-input" class="col-2 col-form-label">Email {{px.id}}</label>
+            <div class="col-10">
+                <div class="float-left">
+              <input class="form-control col-8" [(ngModel)]="lead[px.text]"  placeholder="Enter your email" type="text"  id="example-password-input">
+            </div>
+              <div *ngIf="px.id == '1'" style="margin-left: 1%" class="float-left">
+                  <button class="form-control" (click)="addemail(px.id)" style="background: green;color:white;font-weight: bold;margin: auto">+</button>
+                                                  </div>
+            </div>
+          </div>
+
+
+
+
+          <div  class="form-group row">
+              <label for="example-number-input" class="col-2 col-form-label">Fax</label>
+              <div class="col-10">
+                <input class="form-control" [(ngModel)]="lead.fax" placeholder="Enter fax number" type="number"  id="example-number-input">
+              </div>
+            </div>
+      <!-- <div class="form-group row">
+          <label for="example-url-input" class="col-2 col-form-label">Address</label>
+          <div class="col-10 add">
+            <input class="form-control" type="text" placeholder="Address 1"  id="example-url-input">
+            <input style="margin-top: 10px" class="form-control" type="text" placeholder="Address 2"  id="example-url-input">
+
+            <div style="margin-top: 10px">
+            <div class="float-left">
+                <input  class="form-control " type="text" placeholder="City"  id="example-url-input">
+            </div>
+            <div class="float-left">
+                <input  class="form-control " type="text" placeholder="State"  id="example-url-input">
+            </div>
+            <div class="float-left">
+                <input  class="form-control" type="text" placeholder="Zip Code"  id="example-url-input">
+            </div>
+
+            <div class="float-left">
+                <input  class="form-control" type="text" placeholder="Country"  id="example-url-input">
+            </div>
+          </div>
+
+          </div>
+        </div> -->
+
+
+      <div class="form-group row">
+        <label for="example-tel-input" class="col-2 col-form-label">Effective</label>
+        <div class="col-10">
+
+                <div class="float-left">
+                    <input class="form-control" [(ngModel)]="lead.estdate" type="date"  id="example-date-input">
+                </div>
+                <div class="float-left">
+                   <h5 style="margin:10px" >to</h5>
+                    </div>
+                <div class="float-left">
+                    <input class="form-control"  [(ngModel)]="lead.eeddate" placeholder="Enter your website" type="date"  id="example-tel-input">
+                </div>
+
+
+
+
+        </div>
+      </div>
+      <div class="form-group row">
+          <div style="text-align: center" class="col-6">
+             <button  id="button" >Add Contact person</button>
+            </div>
+
+
+      </div>
+
+        <div class="form-group row">
+            <div style="text-align: center" class="col-6">
+               <button  id="button" (click)="addcontact()" >Submit</button>
+              </div>
+            <div style="text-align: center" class="col-6">
+                <button id="buttoncancel">Cancel</button>
+            </div>
+
+        </div>
+      <!-- <div class="form-group row">
+        <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
+        <div class="col-10">
+          <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Date</label>
+        <div class="col-10">
+          <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-month-input" class="col-2 col-form-label">Month</label>
+        <div class="col-10">
+          <input class="form-control" type="month" value="2011-08" id="example-month-input">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-week-input" class="col-2 col-form-label">Week</label>
+        <div class="col-10">
+          <input class="form-control" type="week" value="2011-W33" id="example-week-input">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-time-input" class="col-2 col-form-label">Time</label>
+        <div class="col-10">
+          <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-color-input" class="col-2 col-form-label">Color</label>
+        <div class="col-10">
+          <input class="form-control" type="color" value="#563d7c" id="example-color-input">
+        </div>
+      </div> -->
+    </div>
+    </mat-card>

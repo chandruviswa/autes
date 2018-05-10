@@ -1,0 +1,132 @@
+
+
+<!-- <h5 style="text-align: center">Add Customer Details</h5>
+<ul  class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a routerLink='/customer' class="nav-link active "   role="tab" data-toggle="tab" routerLinkActive='active'>Customer</a>
+  </li>
+  <li  class="nav-item">
+    <a routerLink='/system' class="nav-link "   role="tab" data-toggle="tab" routerLinkActive='active'  >System Integrator</a>
+  </li>
+  <li  class="nav-item">
+    <a routerLink='/manufacturer' class="nav-link"   routerLinkActive='active'  role="tab" data-toggle="tab">ManuFacturer Master</a>
+  </li>
+</ul> -->
+
+
+    <!-- Tab panes -->
+    <!-- <div class="tab-content">
+      <div id="home" class="container tab-pane active"><br>
+        <h3>HOME</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div id="menu1" class="container tab-pane fade"><br>
+        <h3>Menu 1</h3>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+      <div id="menu2" class="container tab-pane fade"><br>
+        <h3>Menu 2</h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      </div>
+    </div> -->
+    <!-- <div class="d-flex justify-content-center">
+        <h5 class="col-5" class="d-flex justify-content-center" style="margin: 1%;text-align: center;padding: 15px;background: green;color:white">Customer/System Integrator/Manufacturer  Master</h5>
+        </div> -->
+        <h4 style="margin: 1%">Customer Details</h4>
+        <!-- <div style="text-align: end">
+            <form class="form-inline my-2 my-lg-0 ">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+        </div> -->
+       <div style="margin: 1%" *ngFor="let data of postList">
+   <div class="table-responsive col">
+          <table  class="table  table-bordered">
+            <thead style="background: #4286f4;color: white;font-weight: bold;text-align: center;">
+              
+                <th>Customer Name && Address</th>
+                <th>Customer contact info</th>
+                <th>Customer contact person info</th>
+             
+            </thead>
+            <tbody class="table-light">
+              <tr>
+                <td> <b> <img src="../../assets/flag.png"> Customer UID : </b> {{data.uid}} <br>
+                  <hr>
+                  <b> <img src="../../assets/city.png"> Company Name  : </b> {{data.name}}<br>
+                  <hr>
+                 <b> <img src="../../assets/domain.png">  Service Name  :  </b> {{data.fname}}<br>
+                  <hr>
+                  <b><img src="../../assets/contact.png">Address :</b>
+                  <div class="col-4">
+                   
+                    <div class="float-right col-3">
+                        {{data.address1}},<br>{{data.address2}},<br>{{data.city}},<br>{{data.state}},{{data.zipcode}}
+                        </div>
+                    </div> 
+                 
+                 </td>
+                <td>
+                  
+                 
+                      <img src="../../assets/web.png"> {{data.website}}  <br>
+                  
+                 
+                  <hr>
+                  <img src="../../assets/email.png"> {{data.email}} <br>
+                    <hr>
+                  <img src="../../assets/phone.png"> {{data.ph1}} <br> <img src="../../assets/phone.png"> {{data.ph2}} <br><img src="../../assets/phone.png"> {{data.ph3}}  
+                    <hr>
+                    <img src="../../assets/fax.png"> {{data.fax}}
+                </td>
+
+                <td>
+
+                    <button  (click)="onSearch(data.uid)" class="float-right"  mat-raised-button style="background: #4286f4;color: white;font-weight: bold">Add Contacts</button> <br>
+                  <div  *ngFor="let contact of data.contacts">
+                    <div *ngIf="contact.sno == 1">
+                      <b><img src="../../assets/person.png">  Name : </b> {{contact.fname}}  <br>
+                   
+                      <b> <img src="../../assets/manager.png">  Designation : </b>  {{contact.designation}}  <br>
+                  
+                      <b>  <img src="../../assets/cmail.png"> Email : </b> {{contact.e1}} <br>
+                    
+                      <b>  <img src="../../assets/mob.png">  Phone : </b>  <br> <img src="../../assets/phone.png"> {{contact.ph2}} <br><img src="../../assets/phone.png"> {{contact.ph3}}  
+                   
+                      <b>  <img src="../../assets/fax.png">  Fax : </b> {{contact.fax}} <br>
+
+                    <button *ngIf="contact.sno == 1" (click)='more(data.sno)' mat-raised-button  style="background: green;color: white;font-weight: bold" class="float-right">More(+)</button> <br>
+                    <hr>
+                  </div>
+                  </div>
+                
+                  <div  *ngFor="let contact of data.contacts">
+                      <div *ngIf="testflag == true">
+                      <div *ngIf="contact.sno != 1">
+                      <b><img src="../../assets/person.png">  Name : </b> {{contact.fname}}  <br>
+                      <b> <img src="../../assets/manager.png">  Designation : </b> {{contact.designation}}  <br>
+                  
+                      <b>  <img src="../../assets/cmail.png"> Email : </b>{{contact.e1}} <br>
+                    
+                      <b>  <img src="../../assets/mob.png">  Phone : </b> {{contact.ph1}} <br> <img src="../../assets/phone.png"> {{contact.ph2}} <br><img src="../../assets/phone.png"> {{contact.ph3}}  
+                   
+                      <b>  <img src="../../assets/fax.png">  Fax : </b> {{contact.fax}} <br>
+                    <hr>
+                    
+                    
+                  </div>
+                  </div>
+                </div>
+                </td>
+            
+              </tr>
+
+
+            </tbody>
+          </table>
+         
+        </div>
+            
+          <!-- <button mat-raised-button color="accent">SHARE</button> -->
+        
+    </div>
